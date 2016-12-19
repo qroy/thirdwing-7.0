@@ -2,41 +2,30 @@
 ?>
   <?php print render($page['header']); ?>
 
+  <div id="top"></div>
+
   <div id="wrapper">
-    <div id="container" class="clearfix">
+    <div class="container clearfix"><div id="topbar"><?php print render($page['topbar']); ?></div></div>
 
+    <div class="container clearfix">
+      <div id="logo">
+        <?php if ($logo): ?><div id="logo-img"></div><?php endif; ?>
+        <?php if ($site_name): ?><div id="logo-title"><?php print $site_name; ?></div><?php endif; ?>
+        <?php if ($site_slogan): ?><div id="logo-slogan"><?php print $site_slogan; ?></div><?php endif; ?>
+      </div>
+    </div>
+    <div class="container clearfix">
       <div id="header">
-        <div id="logo-floater">
-        <?php if ($logo || $site_title): ?>
-          <?php if ($title): ?>
-            <div id="branding"><strong><a href="<?php print $front_page ?>">
-            <?php if ($logo): ?>
-              <img src="<?php print $logo ?>" alt="<?php print $site_name_and_slogan ?>" title="<?php print $site_name_and_slogan ?>" id="logo" />
-            <?php endif; ?>
-            <?php print $site_html ?>
-            </a></strong></div>
-          <?php else: /* Use h1 when the content title is empty */ ?>
-            <h1 id="branding"><a href="<?php print $front_page ?>">
-            <?php if ($logo): ?>
-              <img src="<?php print $logo ?>" alt="<?php print $site_name_and_slogan ?>" title="<?php print $site_name_and_slogan ?>" id="logo" />
-            <?php endif; ?>
-            <?php print $site_html ?>
-            </a></h1>
-        <?php endif; ?>
-        <?php endif; ?>
-        </div>
-
-        <?php if ($primary_nav): print $primary_nav; endif; ?>
-        <?php if ($secondary_nav): print $secondary_nav; endif; ?>
+        <nav id="nav" role="navigation"><a href="#" class="toggle-nav fa fa-bars">Menu</a><?php print render($page['header']); ?></nav>
       </div> <!-- /#header -->
 
       <?php if ($page['sidebar_first']): ?>
-        <div id="sidebar-first" class="sidebar">
+        <div id="sidebar-left" class="sidebar">
           <?php print render($page['sidebar_first']); ?>
         </div>
       <?php endif; ?>
 
-      <div id="center"><div id="squeeze"><div class="right-corner"><div class="left-corner">
+      <div id="center"><div id="squeeze">
           <?php print $breadcrumb; ?>
           <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
           <a id="main-content"></a>
@@ -56,10 +45,10 @@
           </div>
           <?php print $feed_icons ?>
           <?php print render($page['footer']); ?>
-      </div></div></div></div> <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+      </div></div> <!-- /#squeeze, /#center -->
 
       <?php if ($page['sidebar_second']): ?>
-        <div id="sidebar-second" class="sidebar">
+        <div id="sidebar-right" class="sidebar">
           <?php print render($page['sidebar_second']); ?>
         </div>
       <?php endif; ?>
