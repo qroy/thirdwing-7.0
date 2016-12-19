@@ -1,0 +1,331 @@
+/**
+ * Primary navigation
+ */
+
+#header .content {
+  margin: 0px;
+  padding: 0px;
+}
+.toggle-nav, .toggle-tabs {
+  font-size: 20em/@fs;
+  line-height: 45em/20;
+  padding: 0 7em/20;
+  height: 45em/20;
+  display: inline-block;
+  .border-radius();
+
+  .icon-only();
+  width: 29em/20;
+
+  @media @normal {
+    display: none;
+  }
+  &:link, &:visited {
+    color: @white;
+    background: @secondary;
+  }
+  &:hover, &:active, &.nav-active {
+    background: @secondary;
+  }
+}
+.toggle-nav {
+  z-index: 10;
+  position: absolute;
+  top: -60em/20;
+  @media @phone-ls {
+    text-align: center;
+    width: 136em/20;
+    .box-shadow();
+    text-indent: inherit;
+    &:before {
+      position: relative;
+      left: inherit;
+      right: inherit;
+      text-align: inherit;
+      margin-right: 5em/20;
+      display: inline-block;
+      width: 1em;
+    }
+  }
+  @media @tablet {
+    width: 136em/20;
+  }
+}
+.toggle-tabs {
+  @media @normal {
+    display: none;
+  }
+}
+
+#header, #topbar {
+  .content > div > ul.menu {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 5;
+    li {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      background: none;
+      a {
+        font-size: 20em/@fs;
+        line-height: 45em/20;
+        text-decoration: none;
+        @media @normal {
+          font-size: 16em/@fs;
+          line-height: 30em/16;
+        }
+      }
+    }
+    > li {
+      @media @normal {
+        float: left;
+        padding-bottom: 10em/@fs; /* 10px force a gap between menu and submenu */
+        margin-bottom: -10em/@fs; /* 10px remove extra height from menu */
+      }
+      > a:link, > a:visited {
+        display: block;
+        color: @white-off;
+        margin: 0;
+        padding: 0 7em/20;
+        @media @normal {
+          padding: 0 7em/@fs;
+          margin: 0 2em/@fs;
+        }
+      }
+      &.expanded > a {
+        /* arrow for submenu */
+        &:after {
+          content: '  ';
+          height: 0;
+          position: absolute;
+          right: 8em/@fs;
+          top: 15em/@fs;
+          width: 0;
+          border: 5em/@fs solid transparent;
+          border-top-color: @white;
+          margin: 0 0 0 2em/@fs;
+          overflow: hidden;
+          display: inline-block;
+          @media @normal {
+            position: relative;
+            right: 0;
+            top: 0;
+            border: 3em/@fs solid transparent;
+            border-top-color: @white;
+          }
+        }
+      }
+      ul {
+        max-height: 0;
+        overflow: hidden;
+        .transition(max-height 0.5s);
+        padding: 0;
+        margin: 0;
+        z-index: 4;
+        background: @tertiary;
+        .box-shadow(@box-shadow-inset);
+        @media @normal {
+          position: absolute;
+          top: 100%;
+          .box-shadow();
+          .border-radius();
+        }
+        li { 
+          display: list-item; 
+          float: none;
+        }
+        li a {
+          padding: 0 20em/20;
+          @media @tablet { padding: 0 7em/20; }
+          @media @normal { padding: 0 7em/@fs; }
+          white-space: nowrap;
+          display: block;
+          &:link, &:visited {
+            color: @white;
+          }
+          &:active, &:focus, &:hover, &.active, &.active-trail {
+            background: @secondary;
+            .box-shadow(none);
+          }
+        }
+        li.first a {
+          @media @normal { .border-radius(@border-radius-small @border-radius-small 0 0); }
+        }
+        li.last a {
+          @media @normal { .border-radius(0 0 @border-radius-small @border-radius-small); }
+        }
+      }
+      &:hover ul {
+        max-height: 960em/@fs;
+      }
+    }
+  }
+}
+#header .content > div > ul.menu {
+  max-height: 0;
+  &.nav-active {
+    max-height: 1200em/@fs;
+  }
+  overflow: hidden;
+  .transition(max-height 0.5s);
+  background-color: @primary;
+  .box-shadow(@box-shadow-inset);
+  margin: 0 -20em/@fs;
+  @media @tablet {
+    .border-radius();
+    float: left;
+    position: absolute;
+    left: 20em/@fs;
+    margin: 0;
+    .box-shadow();
+    width: 320em/@fs;
+  }
+  @media @normal {
+    position: relative;
+    left: inherit;
+    width: 100%;
+    max-height: 960em/@fs;
+    overflow: visible;
+  }
+  > li {
+    > a.menu-square {
+      float: left;
+      width: 25%;
+      box-sizing: border-box;
+      @media @normal { 
+        width: 14em/@fs;
+        box-sizing: content-box;
+      }
+    }
+    > a:link, > a:visited {
+      padding: 0 20em/20;
+      @media @tablet { padding: 0 7em/20; }
+      @media @normal { padding: 0 7em/@fs; }
+    }
+    > a:active, > a:focus, > a:hover, > a.active, > a.active-trail, &.active-trail > a, &.over > a, &:hover > a {
+      background-color: @secondary;
+      color: @white;
+      @media @normal {
+        .box-shadow();
+        .border-radius(0 0 @border-radius-small @border-radius-small);
+      }
+    }
+    @media @normal {
+      &:first-of-type > a { margin-left: 7em/@fs; }
+      &:last-of-type > a  { margin-right: 7em/@fs; }
+    }
+  }
+}
+#topbar .content > div > ul.menu {
+  float: right;
+  > li {
+    float: left;
+    > a:link, > a:visited {
+      margin: 0 2em/20 0 0;
+      padding: 0 7em/20;
+      @media @normal { 
+        margin: 0 2em/@fs 0 0; 
+        padding: 0 7em/@fs;
+      }
+    }
+    > a:active, > a:focus, > a:hover, > a.active, > a.active-trail, &.active-trail > a, &.over > a, &:hover > a {
+      background-color: @secondary;
+      color: @white;
+      .border-radius(@border-radius-small);
+      .box-shadow();
+      @media @tablet {
+        .border-radius(0 0 @border-radius-small @border-radius-small);
+      }
+    }
+    &:first-of-type > a { 
+      margin-left: 0;
+      @media @tablet { margin-left: 7em/20; }
+      @media @normal { margin-left: 7em/@fs; }
+    }
+    &:last-of-type > a  { 
+      margin-right: 0;
+      @media @tablet { margin-right: 7em/20; }
+      @media @normal { margin-right: 7em/@fs; }
+    }
+  }
+}
+
+/**
+ * Tabs
+  */
+#tabs-wrapper {
+}
+
+ul.tabs {
+  &.primary {
+    max-height: 0;
+    overflow: hidden;
+    .transition(max-height 0.5s);
+    position: absolute;
+    z-index: 4;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.875em; /* 30px */     
+    background: @tertiary;
+    .border-radius();
+    .box-shadow();
+    @media @normal { 
+      position: relative;
+      max-height: 60em; 
+      width: 100%;
+      float: left;
+      .box-shadow(none);
+    }
+    &.tabs-active {
+      max-height: 60em;
+    }
+    li {
+      margin: 0;
+      padding: 0;
+      display: block;
+      color: @white;
+      @media @normal {
+        float: left;
+      }
+      a:link, a:visited {
+        margin: 0;
+        padding: 0 0.5em;
+        @media @normal {
+          margin: 0 0.125em;
+        }
+        border: 0;
+        color: @white;
+        background: @tertiary;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      a:hover, a:focus, a:active, &.active a {
+        background: @secondary;
+        @media @normal {
+          .border-radius(0 0 @border-radius-small @border-radius-small);
+        }
+      }
+      @media @normal {
+        &:first-of-type > a { margin-left: 0.5em; /* 8px */ }
+        &:last-of-type > a  { margin-right: 0.5em; /* 8px */ }
+      }
+    }
+  }
+}
+
+/**
+ * Menu.module
+ */
+tr.odd td.menu-disabled {
+  background-color: #edf5fa;
+}
+tr.even td.menu-disabled {
+  background-color: @white;
+}
+td.menu-disabled {
+  opacity: 0.5;
+}

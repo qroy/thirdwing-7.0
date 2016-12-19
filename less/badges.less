@@ -1,0 +1,123 @@
+.badge {
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 28em/@fs;
+  padding: 0 4em/@fs;
+  margin: 2em/@fs 2em/@fs 0 0;
+  text-align: center;
+  .transition-standard();
+  color: @white;
+  .border-radius();
+
+  &.badge-combo {
+    font-family: 'thirdwing';
+    font-size: 24em/@fs;
+    line-height: 28em/24;
+    width: 28em/24;
+    padding: 0;
+    margin: 2em/24 2em/24 0 0;
+  }
+  &.badge-combo-aanwezig, &.badge-combo-vervanging { background: @green; }
+  &.badge-combo-vraag {                              background: @grey; }
+  &.badge-combo-afwezig {                            background: @red; }
+
+  @media print {
+
+    &.badge-combo-aanwezig, &.badge-combo-vervanging { background: @grey-dark; }
+    &.badge-combo-vraag {                              background: @grey; }
+    &.badge-combo-afwezig {                            background: transparent; }
+
+  }
+
+  &.badge-sleepgroep {
+    width: 20em/16;
+    background: @yellow;
+  }
+  &.badge-nummer {
+    width: 20em/16;
+    background: @grey-light;
+  }
+  &.badge-kar {
+    background: @blue;
+    width: 110em/@fs;
+    .icon(@fa-var-truck);
+  }
+
+  &.badge-date {
+    color: @black;
+    width: 162em/@fs;
+    text-transform: uppercase;
+    text-align: left;
+    .icon(@fa-var-calendar);
+    &:before { color: @red; }
+  }
+
+  &.badge-time {
+    background: @red;
+    width: 74em/@fs;
+    .icon(@fa-var-clock-o);
+  }
+  &.badge-koor-tijd {
+    background: @primary;
+    width: 74em/@fs;
+    .icon(@fa-var-users);
+  }
+  &.badge-sleepgroep-tijd {
+    background: @yellow;
+    width: 80em/@fs;
+    .icon(@fa-var-clock-o);
+  }
+}
+
+@media screen {
+
+tr {
+  &:nth-of-type(odd), &:nth-of-type(even) {
+    &:hover {
+      .Repetitie {
+        .badge.badge-sleepgroep, .badge.badge-sleepgroep-tijd {
+          background: @yellow;
+        }
+        .badge.badge-time {
+          background: @red;
+        }
+        .badge.badge-koor-tijd {
+          background: @red;
+        }
+        .badge.badge-kar {
+          background: @blue;
+        }
+        .badge-combo-aanwezig, .badge-combo-vervanging { background: @green; }
+        .badge-combo-afwezig                     { background: @red; }
+        .badge-combo-vraag                       { background: @grey; }
+      }
+      .badge.badge-nummer {
+        background: @grey;
+      }
+      a {
+        &:link, &:visited {
+          .badge.badge-nummer {
+            background: @primary;
+          }
+        }
+        &:hover, &:active, &:focus {
+          .badge.badge-nummer {
+            background: @secondary;
+          }
+        }
+      }
+    }
+  }
+}
+
+a:link, a:visited {
+  .badge.badge-nummer {
+    background: @primary-light;
+  }
+}
+
+} /* screen */
+
+.field-icon-application-pdf {
+  .icon(@fa-var-file-pdf-o);
+}
